@@ -1,0 +1,88 @@
+<html>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-74339615-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-74339615-9');
+</script>
+
+
+	<title>Chad Free Zone</title> 
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+<!--   <link rel="stylesheet" type="text/css" href="css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css"> -->
+  <script src="popup.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container" style="margin-top: 1%">
+
+    <div class="blocks">
+
+      <h1> PINKY'S FLAMINGO DEPOT PAYMENT PORTAL</h1>
+
+      <!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3"></script>
+
+<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+<button
+  style="background-color:white;color:black;padding:8px 12px;border:0;border-radius:4px;font-size:1em;width:100%"
+  id="checkout-button-price_1I5PgDLHRC9Pox3n4dyZtVq3"
+  role="link"
+  type="button"
+>
+  TAP TO PAY
+</button>
+
+<div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_test_51Hq5IfLHRC9Pox3nLCh5qF8nFKJFYO1FSXpcmcqpAiju15MQcSHTIeiOI1XZ0hlb1BPTStvxS5I8vMdPKEWS2lBO00PWV4nrwR');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1I5PgDLHRC9Pox3n4dyZtVq3');
+  checkoutButton.addEventListener('click', function () {
+    /*
+     * When the customer clicks on the button, redirect
+     * them to Checkout.
+     */
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1I5PgDLHRC9Pox3n4dyZtVq3', quantity: 1}],
+      mode: 'payment',
+      /*
+       * Do not rely on the redirect to the successUrl for fulfilling
+       * purchases, customers may not always reach the success_url after
+       * a successful payment.
+       * Instead use one of the strategies described in
+       * https://stripe.com/docs/payments/checkout/fulfill-orders
+       */
+      successUrl: 'https://your-website.com/success',
+      cancelUrl: 'https://your-website.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        /*
+         * If `redirectToCheckout` fails due to a browser or network
+         * error, display the localized error message to your customer.
+         */
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
+
+              
+         
+    </div>
+
+  </div>
+</body>
+</html>
