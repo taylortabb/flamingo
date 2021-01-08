@@ -1,0 +1,29 @@
+<html>
+<head>
+
+  <title>rbotbuttontest</title> 
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <script src="popup.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+</head>
+
+<body onLoad="iOS_detect()">
+
+<p>This page will show only an iMessage button if you're on an iOS device (iphone, ipad), and both iMessage and TXT on any other device (mac, android, windows)</p>
+
+<button id='SMS_button'> SMS </button> <button id='iMessage-button'> iMessage </button>
+
+<script>
+function iOS_detect() {
+  var x = document.getElementById("myDIV");
+  if (['iPad Simulator','iPhone Simulator','iPod Simulator','iPad','iPhone','iPod'].includes(navigator.platform) || (navigator.userAgent.includes("Mac") && "ontouchend" in document))  {
+    SMS_button.style.display = "none";
+  } 
+}
+</script>
+
+</body>
+</html>
+
